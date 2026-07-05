@@ -1,0 +1,33 @@
+---
+import FingerprintTable from '../components/FingerprintTable.astro';
+import OutputConsole from '../components/OutputConsole.astro';
+import TestsPanel from '../components/TestsPanel.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Identity from '../components/Identity.astro';
+import Enso from '../components/Enso.astro';
+
+// Copyright (c) 2026, Nashi Uso, (嘘無し).
+---
+
+<BaseLayout title="嘘無し, whisper tests">
+  <Enso />
+  <main class="wrap">
+    <article class="card" role="main">
+      <FingerprintTable />
+
+      <TestsPanel />
+
+      <OutputConsole />
+
+      <footer class="foot">
+        <Identity />
+      </footer>
+    </article>
+  </main>
+
+  <script>
+    import { initFingerprint, initTests } from '../lib/client.ts';
+    initFingerprint();
+    initTests();
+  </script>
+</BaseLayout>

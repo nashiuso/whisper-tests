@@ -1,0 +1,315 @@
+/* Copyright (c) 2026, Nashi Uso, (嘘無し). */
+
+ :root {
+     --bg: #f5f5f3;
+     --fg: #1a1a1a;
+     --muted: rgba(26, 26, 26, 0.62);
+     --line: rgba(26, 26, 26, 0.12);
+     --line-soft: rgba(26, 26, 26, 0.07);
+     --line-strong: rgba(26, 26, 26, 0.28);
+     --surface: rgba(26, 26, 26, 0.025);
+     --surface-2: rgba(26, 26, 26, 0.045);
+     --radius: 14px;
+     --mono: 'SF Mono', 'JetBrains Mono', 'Courier New', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+     --maxw: 760px;
+}
+ @media (prefers-color-scheme: dark) {
+     :root {
+         --bg: #101010;
+         --fg: #e8e6e1;
+         --muted: rgba(232, 230, 225, 0.62);
+         --line: rgba(232, 230, 225, 0.13);
+         --line-soft: rgba(232, 230, 225, 0.07);
+         --line-strong: rgba(232, 230, 225, 0.28);
+         --surface: rgba(232, 230, 225, 0.035);
+         --surface-2: rgba(232, 230, 225, 0.06);
+    }
+}
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+}
+ html {
+     -webkit-font-smoothing: antialiased;
+     text-rendering: optimizeLegibility;
+}
+ body {
+     background: var(--bg);
+     color: var(--fg);
+     font-family: var(--mono);
+     min-height: 100vh;
+     display: flex;
+     justify-content: center;
+     align-items: flex-start;
+     padding: 3.5rem 1.25rem 4rem;
+     position: relative;
+     overflow-x: hidden;
+     line-height: 1.55;
+}
+ a {
+     color: inherit;
+     text-decoration: none;
+     border-bottom: 1px dotted currentColor;
+}
+ a:hover {
+     opacity: 0.55;
+}
+ .wrap {
+     width: 100%;
+     max-width: var(--maxw);
+     position: relative;
+     z-index: 2;
+}
+ .card {
+     width: 100%;
+     background: transparent;
+     border: 1px solid var(--line);
+     border-radius: var(--radius);
+     padding: 2.6rem 2.2rem 2.4rem;
+     backdrop-filter: blur(2px);
+     -webkit-backdrop-filter: blur(2px);
+}
+
+/* identity */
+ .identity {
+     margin-bottom: 1.9rem;
+}
+ .identity .kana {
+     font-size: 0.82rem;
+     opacity: 0.64;
+     letter-spacing: 0.04em;
+}
+ .identity .name {
+     font-size: 1.02rem;
+     font-weight: 600;
+     letter-spacing: 0.015em;
+}
+ .identity .links {
+     margin-top: 0.35rem;
+     font-size: 0.78rem;
+     opacity: 0.72;
+}
+ .identity .links .sep {
+     opacity: 0.45;
+     margin: 0 0.35rem;
+}
+
+/* sections */
+ .section-head {
+     font-size: 0.72rem;
+     text-transform: lowercase;
+     letter-spacing: 0.09em;
+     opacity: 0.58;
+     margin: 2.25rem 0 1rem;
+     border-top: 1px dashed var(--line-strong);
+     padding-top: 1.85rem;
+     display: flex;
+     align-items: center;
+     gap: 0.7rem;
+}
+ .section-head:first-of-type {
+     margin-top: 1.2rem;
+}
+ .section-head .count {
+     font-size: 0.66rem;
+     opacity: 0.5;
+     border: 1px solid var(--line);
+     border-radius: 999px;
+     padding: 0.08rem 0.44rem;
+}
+
+/* fingerprint */
+ .fp-grid {
+     width: 100%;
+     border-collapse: collapse;
+     font-size: 0.775rem;
+     line-height: 1.65;
+}
+ .fp-grid td {
+     padding: 0.28rem 0;
+     vertical-align: top;
+     border-bottom: 1px solid var(--line-soft);
+}
+ .fp-grid tr:last-child td {
+     border-bottom: none;
+}
+ .fp-grid td.key {
+     opacity: 0.68;
+     font-weight: 500;
+     white-space: nowrap;
+     padding-right: 1.2rem;
+     width: 38%;
+}
+ .fp-grid td.val {
+     opacity: 0.88;
+     word-break: break-word;
+     font-variant-ligatures: none;
+}
+ .fp-group-label td {
+     padding-top: 1.1rem !important;
+     opacity: 0.46 !important;
+     font-size: 0.68rem !important;
+     letter-spacing: 0.07em;
+     text-transform: lowercase;
+     border-bottom: none !important;
+}
+
+/* tests */
+ .tests-toolbar {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 0.55rem 0.5rem;
+     align-items: center;
+     margin-bottom: 0.9rem;
+}
+ .test-filter {
+     font-family: var(--mono);
+     font-size: 0.7rem;
+     background: transparent;
+     border: 1px solid var(--line);
+     color: var(--fg);
+     padding: 0.28rem 0.55rem;
+     border-radius: 6px;
+     opacity: 0.78;
+     outline: none;
+     min-width: 180px;
+}
+ .test-filter::placeholder {
+     color: var(--muted);
+}
+ .test-filter:focus {
+     border-color: var(--line-strong);
+     opacity: 1;
+}
+ .tests-grid {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 0.5rem;
+}
+ .test-btn {
+     font-family: var(--mono);
+     background: transparent;
+     border: 1px solid var(--line);
+     color: var(--fg);
+     font-size: 0.695rem;
+     padding: 0.38rem 0.72rem;
+     border-radius: 7px;
+     cursor: pointer;
+     transition: background 0.16s ease, border-color 0.16s ease, opacity 0.16s ease, transform 0.07s ease;
+     opacity: 0.82;
+     letter-spacing: 0.01em;
+     white-space: nowrap;
+}
+ .test-btn:hover {
+     background: var(--surface-2);
+     border-color: var(--line-strong);
+     opacity: 1;
+}
+ .test-btn:active {
+     transform: translateY(1px);
+}
+ .test-btn.running {
+     opacity: 1;
+     border-color: var(--line-strong);
+     background: var(--surface);
+}
+ .test-meta {
+     font-size: 0.66rem;
+     opacity: 0.52;
+     margin-top: 0.65rem;
+}
+ .test-meta kbd {
+     font-family: var(--mono);
+     border: 1px solid var(--line);
+     border-radius: 4px;
+     padding: 0.05rem 0.32rem;
+     font-size: 0.62rem;
+     opacity: 0.9;
+}
+
+/* output */
+ .output {
+     margin-top: 1.1rem;
+     background: var(--surface);
+     border: 1px solid var(--line);
+     border-radius: 8px;
+     padding: 0.85rem 0.95rem;
+     font-size: 0.72rem;
+     min-height: 2.6rem;
+     white-space: pre-wrap;
+     word-break: break-word;
+     opacity: 0.9;
+     display: none;
+     line-height: 1.6;
+}
+ .output.visible {
+     display: block;
+}
+ .output .o-head {
+     opacity: 0.55;
+     font-size: 0.66rem;
+     margin-bottom: 0.35rem;
+     letter-spacing: 0.03em;
+}
+ .output .o-err {
+     color: #b84a3a;
+}
+ @media (prefers-color-scheme: dark) {
+     .output .o-err {
+         color: #e78a7a;
+    }
+}
+
+/* foot */
+ .foot {
+     margin-top: 2.4rem;
+     font-size: 0.66rem;
+     opacity: 0.48;
+     display: flex;
+     justify-content: space-between;
+     flex-wrap: wrap;
+     gap: 0.5rem;
+     border-top: 1px solid var(--line-soft);
+     padding-top: 1.2rem;
+}
+ .foot .mono-dim {
+     opacity: 0.7;
+}
+
+/* enso */
+ .enso-background {
+     position: fixed;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     width: 86vmin;
+     height: 86vmin;
+     opacity: 0.028;
+     pointer-events: none;
+     z-index: 0;
+}
+ @media (prefers-color-scheme: dark) {
+     .enso-background {
+         opacity: 0.045;
+    }
+}
+
+/* responsive */
+ @media (max-width: 560px) {
+     body {
+         padding: 1.6rem 0.9rem 3rem;
+    }
+     .card {
+         padding: 1.6rem 1.15rem;
+         border-radius: 12px;
+    }
+     .fp-grid td.key {
+         width: auto;
+         padding-right: 0.75rem;
+    }
+     .test-btn {
+         font-size: 0.67rem;
+         padding: 0.34rem 0.6rem;
+    }
+}

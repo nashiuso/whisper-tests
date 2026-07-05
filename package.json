@@ -1,0 +1,21 @@
+{
+  "name": "whisper-tests",
+  "type": "module",
+  "version": "0.6.0",
+  "private": true,
+  "description": "whisper tests, minimal fingerprint whisper lab, built with Astro. astryx void, practical echoes.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "start": "astro dev",
+    "format": "prettier . --write",
+    "check-format": "prettier . --check"
+  },
+  "dependencies": {
+    "astro": "^7.0.6"
+  },
+  "engines": {
+    "node": ">=18.14.1"
+  }
+}

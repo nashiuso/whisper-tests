@@ -1,0 +1,91 @@
+---
+// Copyright (c) 2026, Nashi Uso, (嘘無し).
+
+export interface TestDef {
+  id: string;
+  label: string;
+  cat: 'net' | 'privacy' | 'media' | 'hardware' | 'storage' | 'api';
+  hint?: string;
+}
+
+const tests: TestDef[] = [
+  { id: 'ping', label: 'ping / latency', cat: 'net', hint: 'rtt' },
+  { id: 'dns', label: 'dns timing', cat: 'net', hint: 'lookup' },
+  { id: 'webrtc', label: 'webrtc leak', cat: 'privacy', hint: 'ice' },
+  { id: 'storage', label: 'storage speed', cat: 'storage', hint: 'ls/idb' },
+  { id: 'storage-estimate', label: 'storage estimate', cat: 'storage', hint: 'quota' },
+  { id: 'permissions', label: 'permissions', cat: 'privacy', hint: 'api states' },
+  { id: 'clipboard', label: 'clipboard', cat: 'api', hint: 'read/write' },
+  { id: 'audio', label: 'audio context', cat: 'media', hint: 'sampleRate' },
+  { id: 'webgl', label: 'webgl info', cat: 'hardware', hint: 'gpu' },
+  { id: 'webgpu', label: 'webgpu adapter', cat: 'hardware', hint: 'experimental' },
+  { id: 'canvas', label: 'canvas fingerprint', cat: 'privacy', hint: 'hash' },
+  { id: 'fonts', label: 'fonts probe', cat: 'privacy', hint: 'system fonts' },
+  { id: 'geolocation', label: 'geolocation', cat: 'privacy', hint: 'coords' },
+  { id: 'battery', label: 'battery', cat: 'hardware', hint: 'level' },
+  { id: 'media-devices', label: 'media devices', cat: 'media', hint: 'cameras/mics' },
+  { id: 'speech', label: 'speech synthesis', cat: 'media', hint: 'voices' },
+  { id: 'sensors', label: 'sensors', cat: 'hardware', hint: 'motion/orient' },
+  { id: 'gamepad', label: 'gamepad', cat: 'hardware', hint: 'controllers' },
+  { id: 'bluetooth', label: 'bluetooth', cat: 'api', hint: 'web-bluetooth' },
+  { id: 'usb', label: 'usb', cat: 'api', hint: 'webusb' },
+  { id: 'nfc', label: 'nfc', cat: 'api', hint: 'webnfc' },
+  { id: 'vibration', label: 'vibration', cat: 'hardware', hint: 'haptics' },
+  { id: 'wake-lock', label: 'wake lock', cat: 'api', hint: 'screen' },
+  { id: 'fullscreen', label: 'fullscreen', cat: 'api', hint: 'display' },
+  { id: 'screen-capture', label: 'screen capture', cat: 'media', hint: 'getDisplayMedia' },
+  { id: 'share', label: 'share api', cat: 'api', hint: 'navigator.share' },
+  { id: 'idle', label: 'idle detection', cat: 'privacy', hint: 'user idle' },
+  { id: 'network-scan', label: 'network scan', cat: 'net', hint: 'connection' },
+  { id: 'timezone-drift', label: 'timezone drift', cat: 'privacy', hint: 'offset' },
+  { id: 'workers', label: 'workers bench', cat: 'hardware', hint: 'concurrency' },
+];
+
+const cats = [...new Set(tests.map((t) => t.cat))];
+---
+
+<div class="section-head">
+  <span>— practical tests —</span>
+  <span class="count">{tests.length}</span>
+</div>
+
+<div class="tests-toolbar">
+  <input
+    id="test-filter"
+    class="test-filter"
+    type="search"
+    placeholder="filter tests… / press /"
+    autocomplete="off"
+    spellcheck="false"
+  />
+  <div style="font-size:.66rem; opacity:.5;">
+    {cats.join(' · ')}
+  </div>
+</div>
+
+<div class="tests-grid" id="tests-grid">
+  {
+    tests.map((t) => (
+      <button
+        class="test-btn"
+        data-test={t.id}
+        data-cat={t.cat}
+        data-label={t.label}
+        title={t.hint ? `${t.label} — ${t.hint}` : t.label}
+        type="button"
+      >
+        {t.label}
+      </button>
+    ))
+  }
+</div>
+
+<div class="test-meta">
+  click to run
+  <br />
+  <kbd>r</kbd> (re-run last)
+  <br />
+  <kbd>/</kbd> (filter tests)
+  <br />
+  <kbd>c</kbd> (clear console)
+</div>
