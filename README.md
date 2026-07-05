@@ -2,7 +2,7 @@
 
 # 嘘無し, whisper tests
 
-<img align="right" width="100" height="100" alt="favicon" src="https://github.com/user-attachments/assets/94841f68-58f1-439d-88b0-702b402dc7c5" />
+<img align="right" width="100" height="100" alt="favicon" src="./public/favicon.svg" />
 
 <!-- Copyright (c) 2026, Nashi Uso , (嘘無し) . -->
 
