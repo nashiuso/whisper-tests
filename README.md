@@ -59,5 +59,5 @@ npm run preview
 
 <samp> —
 <i><a href="https://github.com/nashiuso">github</a></i> ,
-<i><a href="mailto:corrimosdelagente@proton.me">mail</a></i>
+<i><a href="mailto:stehpenderdealer@proton.me">mail</a></i>
 — </samp>
